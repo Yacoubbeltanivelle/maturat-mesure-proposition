@@ -1,0 +1,5 @@
+Polices servies localement, licence SIL Open Font License 1.1 (texte : OFL.txt).
+
+instrument-sans-400.ttf / -500.ttf / -600.ttf
+Instrument Sans (Regular, Medium, SemiBold)
+Copyright 2022 The Instrument Sans Project Authors (https://github.com/Instrument/instrument-sans)
