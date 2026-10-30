@@ -43,19 +43,19 @@ export const SITE = {
 
 export const HOME = {
   title: 'Mesurer. Contrôler. Maîtriser vos procédés.',
-  intro: 'Instrumentation et solutions de contrôle pour vos procédés industriels. Définissons ensemble la solution adaptée à votre application.',
+  intro: 'Instrumentation, signaux et contrôle des fluides : trouvez une référence ou décrivez le besoin de votre installation.',
   primary: 'Explorer le catalogue',
   secondary: 'Décrire mon besoin',
-  measuresLabel: 'Quatre grandeurs, un même savoir-faire',
+  measuresLabel: 'Les quatre mesures de l’instrumentation',
   measures: [
-    { id: 'niveau', unit: 'm', label: 'Niveau', cell: 0, text: 'Mesurer et détecter le niveau de liquides ou de solides, selon les contraintes du procédé.' },
-    { id: 'debit', unit: 'm³/h', label: 'Débit', cell: 1, text: 'Suivre le débit d’un fluide avec une technologie cohérente avec le procédé.' },
-    { id: 'temperature', unit: '°C', label: 'Température', cell: 2, text: 'Suivre la température de votre installation et choisir le principe de mesure adapté.' },
-    { id: 'pression', unit: 'bar', label: 'Pression', cell: 3, text: 'Mesurer la pression de vos fluides, au plus près de votre application.' },
+    { id: 'niveau', unit: 'm', label: 'Niveau', cell: 0, text: 'Lire le niveau d’une cuve ou détecter un seuil, selon votre procédé.' },
+    { id: 'debit', unit: 'm³/h', label: 'Débit', cell: 1, text: 'Mesurer un débit avec une technologie adaptée au fluide.' },
+    { id: 'temperature', unit: '°C', label: 'Température', cell: 2, text: 'Suivre la température avec une sonde adaptée à l’installation.' },
+    { id: 'pression', unit: 'bar', label: 'Pression', cell: 3, text: 'Mesurer une pression selon le fluide et les contraintes du procédé.' },
   ],
   measureNote: 'Visuels d’illustration de produits fictifs. Aucune référence n’est garantie.',
-  domainsTitle: 'Sept domaines, un seul interlocuteur',
-  domainsIntro: 'Du capteur au raccord, des signaux aux mesures de laboratoire : chaque domaine regroupe des familles et des exemples de fiches.',
+  domainsTitle: 'Tous nos domaines',
+  domainsIntro: 'L’instrumentation regroupe les quatre mesures ci-dessus. Retrouvez aussi le signal, l’air, les fluides, l’analyse liquide, la smart connexion et les produits associés.',
   featuredTitle: 'Produits à la une',
   featuredIntro: 'Deux exemples de fiches mises en avant. Dans l’administration de démonstration, ce choix se règle fiche par fiche.',
   dropout: {
@@ -83,6 +83,7 @@ export const HOME = {
 };
 
 export const COMPANY = {
+  requestHint: 'Indiquez le fluide, la mesure recherchée et les contraintes que vous connaissez. Vous pouvez aussi simplement écrire « je ne sais pas encore ».',
   roles: [
     { title: 'Distribuer', text: 'Mettre à disposition des instruments et des composants de fournisseurs sélectionnés, avec leurs documents.' },
     { title: 'Conseiller', text: 'Aider à passer d’un besoin parfois flou à une famille de solutions et aux bonnes questions à poser.' },
@@ -95,6 +96,12 @@ export const COMPANY = {
     { title: 'Suivre la mise en œuvre', text: 'Un point de contact pour les questions qui suivent.' },
   ],
   intro: 'Maturat Mesure est un distributeur et un conseil en instrumentation. Cette page présente la manière de travailler, sans chiffres ni références clients tant qu’ils n’ont pas été fournis.',
+};
+
+export const CATALOGUE_GUIDE = {
+  title: 'Vous connaissez la référence ?',
+  text: 'Recherchez son nom ou sa référence ci-dessous. Sinon, décrivez votre installation pour être orienté.',
+  advice: 'Besoin d’aide pour choisir ?',
 };
 
 export const SETTINGS = {
