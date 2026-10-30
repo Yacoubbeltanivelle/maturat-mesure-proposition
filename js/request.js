@@ -77,6 +77,15 @@ export function demande({ query }) {
     const unk = check({ label: 'Je ne sais pas encore, je préfère en parler avec un conseiller', name: 'unknown', checked: d.unknown });
     form.append(rub, need, unk);
     bind(form);
+    const syncRequired = () => {
+      const required = !d.productId && !d.unknown;
+      $('textarea', need).setAttribute('aria-required', String(required));
+      const marker = $('.req', need);
+      if (marker) marker.hidden = !required;
+      if (!required) { setError(need, ''); summary(form, []); }
+    };
+    $('input', unk).addEventListener('change', syncRequired);
+    syncRequired();
     nav(form, rerender, { validate: () => {
       const bad = !d.productId && !d.unknown && d.need.trim().length < 3;
       setError(need, bad ? 'Décrivez votre besoin en quelques mots, ou cochez « Je ne sais pas encore ».' : '');
