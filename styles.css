@@ -13,6 +13,7 @@
   --orange: #f7941d;
   --deep: #0d3556;
   --line: #cfdde8;
+  --control-border: #6b879b;
   --tint: #e6f0f7;
   --muted: #4a5760;
   --error: #b3261e;
@@ -153,17 +154,17 @@ h1:focus, main:focus { outline: none; }
 .mcard__stage { display: block; width: 64%; margin: 8px auto 14px; }
 .mcard__title { font-size: 1.3rem; font-weight: 500; letter-spacing: 0.02em; text-transform: uppercase; margin-bottom: 8px; }
 .mcard__text { font-size: 0.95rem; color: var(--muted); line-height: 1.5; flex: 1; }
-.mcard__foot { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 0.85rem; font-weight: 500; color: var(--blue-text); }
+.mcard__foot { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 0.9375rem; font-weight: 500; color: var(--blue-text); }
 .hero .fineprint { margin-top: 24px; }
 
 /* ---------- Accueil : domaines ---------- */
 .domains { border-top: 1px solid var(--graphite); }
-.domain { display: grid; grid-template-columns: 56px minmax(0, 1fr) 88px 32px; gap: 20px; align-items: center; padding: 16px 8px; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--graphite); transition: background-color 0.15s, padding 0.2s; }
+.domain { display: grid; grid-template-columns: 44px minmax(0, 1fr) 64px 24px; gap: 16px; align-items: center; padding: 10px 8px; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--graphite); transition: background-color 0.15s, padding 0.2s; }
 .domain:hover { background: var(--white); padding-inline: 20px 8px; }
 .domain__t { display: flex; flex-direction: column; min-width: 0; }
 .domain__t strong { font-size: 1.15rem; font-weight: 600; }
 .domain__t span { font-size: 0.92rem; color: var(--muted); }
-.domain__v { display: block; width: 72px; justify-self: center; }
+.domain__v { display: block; width: 52px; justify-self: center; }
 .domain__go { color: var(--blue-text); font-size: 1.3rem; }
 
 /* ---------- Scènes d'instruments ---------- */
@@ -343,7 +344,7 @@ h1:focus, main:focus { outline: none; }
 .field--check .hint { flex-basis: 100%; margin: 0; }
 .req { color: var(--error); }
 .opt { color: var(--muted); font-weight: 400; font-size: 0.9rem; }
-input[type="text"], input[type="search"], input[type="email"], input[type="tel"], input[type="url"], textarea, select { width: 100%; padding: 11px 14px; background: var(--white); border: 1px solid #8fa9bc; border-radius: 6px; line-height: 1.4; transition: border-color 0.15s; }
+input[type="text"], input[type="search"], input[type="email"], input[type="tel"], input[type="url"], textarea, select { width: 100%; padding: 11px 14px; background: var(--white); border: 1px solid var(--control-border); border-radius: 6px; line-height: 1.4; transition: border-color 0.15s; }
 input::placeholder, textarea::placeholder { color: #6b7a85; }
 input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 3px solid var(--blue-text); outline-offset: 1px; border-color: var(--blue-text); }
 select:disabled { background: var(--pale); color: var(--muted); }
