@@ -1,5 +1,5 @@
 // Vues publiques. Chaque vue renvoie { title, node } ; les contenus viennent de data.js et de l'état mémoire.
-import { HOME, COMPANY, BASE_ASSETS, ATLAS, LEGAL, CREDITS_MEDIA_FILE, SITE, PRODUCT_NOTE } from '../data.js';
+import { HOME, COMPANY, CATALOGUE_GUIDE, BASE_ASSETS, ATLAS, LEGAL, CREDITS_MEDIA_FILE, SITE, PRODUCT_NOTE } from '../data.js';
 import { h, link, href, atlas, norm, plural, options, field, $ } from './dom.js';
 import * as S from './state.js';
 import { pageHead, sectionHead, productCard, emptyState, specNote, ctaBand, crumbs } from './layout.js';
@@ -31,7 +31,7 @@ export function home() {
           h('span', { class: 'mcard__stage' }, a(m.cell)),
           h('span', { class: 'mcard__title', text: m.label }),
           h('span', { class: 'mcard__text', text: m.text }),
-          h('span', { class: 'mcard__foot', text: 'Voir les fiches' }))))),
+          h('span', { class: 'mcard__foot', text: `Voir les fiches ${m.label}` }))))),
       h('p', { class: 'fineprint center', text: HOME.measureNote })));
 
   const domains = h('section', { class: 'section section--pale' },
@@ -131,6 +131,7 @@ export function catalogue({ query }) {
   const sub = field({ label: 'Sous-famille', name: 'group', type: 'select', value: f.group, options: [] });
   const sup = field({ label: 'Fournisseur', name: 'supplier', type: 'select', value: f.supplier, options: options(S.publicSuppliers().map((x) => [x.id, x.name]), 'Tous les fournisseurs') });
   const reset = h('button', { class: 'btn btn--quiet btn--sm', type: 'button', text: 'Réinitialiser les filtres' });
+  const advice = link('/demande', CATALOGUE_GUIDE.advice, 'btn btn--quiet btn--sm');
 
   const fillGroups = () => {
     const sel = $('select', sub);
@@ -141,6 +142,7 @@ export function catalogue({ query }) {
     f.group = sel.value;
   };
   const draw = () => {
+    advice.setAttribute('href', href('/demande', f.q ? { besoin: f.q } : null));
     const res = live.filter((p) => matches(p, f));
     const active = f.q || f.family || f.group || f.supplier;
     count.textContent = `${plural(res.length, 'fiche affichée', 'fiches affichées')} sur ${live.length}`;
@@ -163,6 +165,9 @@ export function catalogue({ query }) {
 
   return { title: S.pageText('catalogue', 'title'), node: h('div', {},
     pageHead({ kicker: 'Catalogue de démonstration', title: S.pageText('catalogue', 'title'), intro: S.pageText('catalogue', 'intro'), trail: [['Accueil', '/'], ['Catalogue', '/catalogue']] }),
+    h('div', { class: 'wrap' }, h('aside', { class: 'catalog-guide', 'aria-label': 'Choisir votre parcours' },
+      h('p', {}, h('strong', { text: CATALOGUE_GUIDE.title }), h('span', { text: CATALOGUE_GUIDE.text })),
+      advice)),
     h('section', { class: 'section section--tight' }, h('div', { class: 'wrap catalog' },
       h('form', { class: 'filters', role: 'search', 'aria-label': 'Filtres du catalogue', onsubmit: (e) => e.preventDefault() }, q, rub, sub, sup, reset),
       h('div', {}, count, grid))),
@@ -294,7 +299,7 @@ export function entreprise() {
       h('ol', { class: 'steps' }, COMPANY.method.map((m, i) => h('li', {}, h('span', { class: 'mono', text: String(i + 1).padStart(2, '0') }), h('div', {}, h('h3', { text: m.title }), h('p', { text: m.text }))))))),
     h('section', { class: 'section' }, h('div', { class: 'wrap' }, sectionHead('Sept domaines', 'Les familles que Maturat Mesure peut vous aider à explorer.'),
       h('ul', { class: 'chips' }, doms.map((f) => h('li', {}, link(`/rubrique/${f.id}`, f.title, 'chip chip--link')))))),
-    ctaBand('Parlons de votre application', 'Une description courte suffit pour commencer.')) };
+    ctaBand('Parlons de votre application', COMPANY.requestHint)) };
 }
 
 export function faq() {

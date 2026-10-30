@@ -133,12 +133,12 @@ export function productForm({ params }) {
     { label: 'Fournisseur', name: 'supplier', type: 'select', options: options(state.suppliers.map((s) => [s.id, s.name])) },
     { label: 'Rubrique', name: 'family', type: 'select', options: options(state.families.map((f) => [f.id, f.title])) },
     { label: 'Sous-famille', name: 'group', type: 'select', options: [] },
-    { label: 'Statut', name: 'status', type: 'select', options: options([['publie', 'Publié'], ['brouillon', 'Brouillon']]) },
+    { label: 'Statut', name: 'status', type: 'select', options: options([['publie', 'Publié'], ['brouillon', 'Brouillon']]), hint: 'Publié : visible dans cette maquette. Brouillon : visible seulement dans l’admin. Tout disparaît au rechargement.' },
     { check: true, label: 'À la une sur l’accueil', name: 'featured' },
     { label: 'Visuel (atlas de produits)', name: 'cell', type: 'select', options: options(cellOptions()) },
     { node: h('div', { class: 'preview-slot' }) },
-    { label: 'Résumé', name: 'summary', type: 'textarea', rows: 2 },
-    { label: 'Usage', name: 'usage', type: 'textarea', rows: 2 },
+    { label: 'Résumé', name: 'summary', type: 'textarea', rows: 2, hint: 'En une phrase : ce que fait le produit et pour quel besoin.' },
+    { label: 'Usage', name: 'usage', type: 'textarea', rows: 2, hint: 'Dans quelle installation ou situation ce produit est-il utile ?' },
     { label: 'Description', name: 'description', type: 'textarea', rows: 4 },
     { label: 'Applications', name: 'applications', type: 'textarea', rows: 3, hint: 'Une application par ligne.', optional: true },
     { label: 'Caractéristiques', name: 'specs', type: 'textarea', rows: 4, hint: 'Une ligne par caractéristique : Nom : valeur. Valeurs fictives à signaler.', optional: true },
@@ -159,7 +159,8 @@ export function productForm({ params }) {
   };
   fillGroups(p.group); fam.addEventListener('change', () => fillGroups());
   $('.preview-slot', f).replaceWith(preview($('[data-field=cell]', f)));
-  return wrap(isNew ? 'Nouvelle fiche' : 'Modifier la fiche', isNew ? 'Une fiche créée ici apparaît sur le site si elle est publiée.' : p.title, f);
+  return wrap(isNew ? 'Nouvelle fiche' : 'Modifier la fiche', isNew ? 'Une fiche créée ici apparaît dans la maquette de cet onglet si elle est publiée.' : p.title,
+    h('div', {}, !isNew && S.isLive(p) ? h('p', { class: 'fineprint' }, link(`/produit/${p.id}`, 'Voir la fiche sur le site'), ' · Aperçu de la dernière version enregistrée dans cet onglet. Enregistrez vos modifications avant de l’ouvrir.') : null, f));
 }
 
 /* ---------- Demandes ---------- */
@@ -184,7 +185,7 @@ export function demandeDetail({ params }) {
   const f = form(spec, r, { label: 'Enregistrer la démo', onSave: (d) => { Object.assign(r, d); flash(`Demande ${r.id} mise à jour.`); } });
   return wrap(`Demande ${r.id}`, 'Détail de la demande et suivi interne.', h('div', { class: 'admin__cols' },
     h('section', { class: 'panel' }, h('h2', { text: 'Contenu' }), h('dl', { class: 'facts' }, rows.map(([k, v]) => h('div', {}, h('dt', { text: k }), h('dd', { class: 'pre', text: v })))),
-      h('button', { class: 'btn btn--quiet', type: 'button', text: 'Répondre par e-mail', onclick: () => notice('Non simulé', 'L’envoi d’e-mails n’existe pas dans cette maquette : aucune réponse ne peut partir depuis l’administration de démonstration.') })),
+      h('p', { class: 'fineprint', text: 'Le suivi se fait ici ; les réponses aux clients se font depuis votre messagerie habituelle. Aucun e-mail ne peut être envoyé depuis cette maquette.' })),
     h('section', { class: 'panel' }, h('h2', { text: 'Suivi' }), f)),
     link(A('/demandes'), '← Retour aux demandes', 'btn btn--quiet'));
 }
