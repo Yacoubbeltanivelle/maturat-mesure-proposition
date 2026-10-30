@@ -1,0 +1,19 @@
+name: Vérification statique
+
+# Aucun déploiement : ce workflow ne fait que contrôler le contenu du dépôt.
+on:
+  pull_request:
+  push:
+    branches-ignore:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  verifier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Vérification statique (syntaxe, imports, ressources, données)
+        run: node scripts/check.mjs --strict
