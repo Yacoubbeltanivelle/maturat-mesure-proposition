@@ -1,489 +1,284 @@
-// Contenus et données de la maquette. Tous les textes sont des propositions.
-// Les composants (app.js) lisent ce fichier ; aucun catalogue n'est dupliqué ailleurs.
+// Contenus et données de la maquette. Tous les textes sont des propositions et toutes
+// les données produits, fournisseurs et demandes sont fictives.
+// Les composants (js/) lisent ce module ; aucun contenu n'est dupliqué ailleurs.
 
-const PH = 'assets/photos/';
-
-export const DATA = {
-  site: {
-    name: 'Maturat Mesure',
-    banner: 'Exploration de maquette · aucun envoi réel',
-    bannerLink: 'Voir les limites',
-    nav: [
-      { href: '#solutions', label: 'Solutions' },
-      { href: '#dropout', label: 'Dropout' },
-      { href: '#applications', label: 'Applications' },
-      { href: '#conseil', label: 'Conseil' },
-      { href: '#entreprise', label: 'Entreprise' },
-      { href: '#faq', label: 'Questions' },
-    ],
-    cta: 'Décrire mon besoin',
-  },
-
-  hero: {
-    title: 'La mesure adaptée à votre installation.',
-    text: 'Des instruments pour mesurer, contrôler et raccorder vos installations. Nous vous aidons à préciser votre besoin et à trouver une solution adaptée.',
-    primary: 'Explorer les solutions',
-    secondary: 'Décrire mon besoin',
-    indexLabel: 'Nos six activités',
-    trayNote: 'Visuels d’illustration. Chaque référence reste à confirmer avec Maturat Mesure.',
-    pick: 'Explorer',
-    // Les quatre mesures, à égalité. `example` renvoie à une fiche pour l'image.
-    instruments: [
-      { id: 'niveau', label: 'Niveau', example: 'niveau-houdec' },
-      { id: 'debit', label: 'Débit', example: 'debit-fuji' },
-      { id: 'temperature', label: 'Température', example: 'temperature-fuji' },
-      { id: 'pression', label: 'Pression', example: 'pression-fuji' },
-    ],
-  },
-
-  solutions: {
-    title: 'Explorez nos solutions',
-    intro: 'Choisissez une activité, ou cherchez directement un produit ou un besoin.',
-    searchLabel: 'Rechercher un produit ou un besoin',
-    searchPlaceholder: 'Par exemple : niveau en cuve, pH, raccord',
-    searchClear: 'Effacer la recherche',
-    emptyTitle: 'Aucun exemple ne correspond à cette recherche.',
-    emptyText: 'Essayez un mot plus simple (niveau, débit, vanne), ou décrivez votre besoin tel quel : un conseiller le reprendra avec vous.',
-    emptyNeed: 'Décrire ce besoin',
-    resultsOne: 'exemple trouvé',
-    resultsMany: 'exemples trouvés',
-    countOne: 'exemple',
-    countMany: 'exemples',
-    openCard: 'Voir la fiche',
-    chooseFamily: 'Choisir cette famille pour ma demande',
-    subTitle: 'Sous-familles',
-    examplesTitle: 'Exemples de fiches',
-    contextLabel: 'Contexte retenu pour ma demande :',
-    contextGo: 'Aller au formulaire',
-    contextNone: 'Aucun contexte choisi pour l’instant.',
-  },
-
-  families: [
-    {
-      id: 'instrumentation',
-      title: 'Instrumentation',
-      short: 'Niveau, débit, température, pression',
-      intro: 'Les quatre mesures de base d’une installation industrielle. Choisissez celle qui vous occupe.',
-      tabs: true,
-      groups: [
-        { id: 'niveau', title: 'Niveau', intro: 'Savoir où se situe un liquide dans un réservoir, une cuve ou une colonne.' },
-        { id: 'debit', title: 'Débit', intro: 'Suivre la quantité de fluide qui circule dans une conduite.' },
-        { id: 'temperature', title: 'Température', intro: 'Mesurer la chaleur d’un fluide, d’un équipement ou d’un procédé.' },
-        { id: 'pression', title: 'Pression', intro: 'Suivre la pression d’une ligne, d’un équipement ou d’un réseau.' },
-      ],
-    },
-    {
-      id: 'signal',
-      title: 'Contrôle du signal',
-      short: 'Indicateurs, convertisseurs, régulateurs',
-      intro: 'Ce qui lit, convertit, régule ou vérifie le signal issu des mesures.',
-      groups: [
-        { id: 'indicateurs', title: 'Indicateurs' },
-        { id: 'convertisseurs', title: 'Convertisseurs' },
-        { id: 'regulateurs', title: 'Régulateurs' },
-        { id: 'calibrateurs', title: 'Calibrateurs' },
-        { id: 'divers', title: 'Divers' },
-      ],
-    },
-    {
-      id: 'air',
-      title: 'Traitement d’air',
-      short: 'Gamme Dropout',
-      intro: 'Traitement de l’air comprimé avec la gamme Dropout, présentée plus bas dans une section dédiée.',
-      groups: [{ id: 'dropout', title: 'Gamme Dropout' }],
-    },
-    {
-      id: 'inox',
-      title: 'Raccords inox & contrôle des fluides',
-      short: 'Gamme Fitok, vannes, détendeurs',
-      intro: 'Raccordement et maîtrise des fluides en inox, avec la gamme Fitok.',
-      groups: [
-        { id: 'fitok', title: 'Gamme Fitok' },
-        { id: 'bagues', title: 'Raccords à bagues' },
-        { id: 'vannes', title: 'Vannes' },
-        { id: 'manifolds', title: 'Manifolds' },
-        { id: 'clapets', title: 'Clapets' },
-        { id: 'detendeurs', title: 'Détendeurs' },
-      ],
-    },
-    {
-      id: 'analyse',
-      title: 'Échantillonnage & analyse liquide',
-      short: 'pH, redox, chlore, conductivité',
-      intro: 'Prélever et analyser un liquide pour suivre sa qualité.',
-      groups: [
-        { id: 'ph', title: 'pH' },
-        { id: 'redox', title: 'Redox' },
-        { id: 'chlore', title: 'Chlore' },
-        { id: 'conductivite', title: 'Conductivité' },
-      ],
-    },
-    {
-      id: 'associes',
-      title: 'Produits associés',
-      short: 'Électrovannes, pneumatique, tubing',
-      intro: 'Les compléments qui accompagnent une installation de mesure ou de contrôle.',
-      groups: [
-        { id: 'electrovannes', title: 'Électrovannes' },
-        { id: 'pneumatique', title: 'Raccords et vannes pneumatiques' },
-        { id: 'tubing', title: 'Tubing' },
-      ],
-    },
-  ],
-
-  // Étiquettes communes des fiches.
-  card: {
-    choose: 'Choisir pour ma demande',
-    close: 'Fermer la fiche',
-    usage: 'Usage',
-    family: 'Famille',
-    visual: 'Visuel',
-    reference: 'Référence',
-    toSpecify: 'À préciser pour votre demande',
-    noVisual: 'Pas de visuel dans cette maquette',
-    refPending: 'À confirmer avec Maturat Mesure avant toute demande.',
-    visualGeneric: 'Pas de visuel : fiche générique de démonstration.',
-    visualMaker: (maker, note) => `Illustration ${maker} (droits réservés). ${note} Exemple de présentation : la référence exacte doit être confirmée.`,
-    toSpecifyList: ['Fluide concerné', 'Installation et raccordement existants', 'Signal ou affichage souhaité', 'Contraintes du site'],
-  },
-
-  examples: [
-    {
-      id: 'niveau-houdec', family: 'instrumentation', group: 'niveau',
-      title: 'Indicateur de niveau sur colonne',
-      maker: 'Houdec', makerNote: 'Visuel issu de la page Indicateurs de niveau du fabricant.',
-      usage: 'Lire le niveau d’un liquide dans un réservoir ou une cuve, directement sur l’installation.',
-      keywords: 'niveau reservoir cuve colonne indicateur liquide lecture',
-      img: { src: PH + 'home-level-houdec.png', alt: 'Indicateur de niveau sur colonne, vue en perspective', crop: { iw: 1888, ih: 824, x: 810, y: 66, w: 311, h: 758 } },
-    },
-    {
-      id: 'niveau-detecteur', family: 'instrumentation', group: 'niveau',
-      title: 'Détecteur de niveau',
-      usage: 'Signaler qu’un niveau haut ou bas est atteint dans un réservoir.',
-      keywords: 'niveau seuil alarme haut bas detecteur cuve',
-    },
-    {
-      id: 'debit-fuji', family: 'instrumentation', group: 'debit',
-      title: 'Débitmètre électromagnétique',
-      maker: 'Fuji Electric', makerNote: 'Visuel du fabricant, modèle M1000 visible sur la photo.',
-      usage: 'Suivre le débit d’un liquide conducteur dans une conduite.',
-      keywords: 'debit debitmetre electromagnetique conduite liquide m1000 fuji',
-      img: { src: PH + 'home-flow-fuji.png', alt: 'Débitmètre électromagnétique à brides', crop: { iw: 682, ih: 682, x: 92, y: 36, w: 483, h: 624 } },
-    },
-    {
-      id: 'debit-gaz', family: 'instrumentation', group: 'debit',
-      title: 'Débitmètre pour gaz ou air',
-      usage: 'Suivre la consommation d’un réseau d’air ou de gaz.',
-      keywords: 'debit gaz air comprime consommation reseau',
-    },
-    {
-      id: 'temperature-fuji', family: 'instrumentation', group: 'temperature',
-      title: 'Sonde de température à tête de raccordement',
-      maker: 'Fuji Electric', makerNote: 'Visuel du fabricant.',
-      usage: 'Mesurer la température d’un fluide dans une ligne ou un réservoir.',
-      keywords: 'temperature sonde tete raccordement thermometre fluide fuji',
-      img: { src: PH + 'home-temperature-fuji.png', alt: 'Sonde de température avec tête de raccordement bleue', crop: { iw: 682, ih: 682, x: 167, y: 52, w: 335, h: 620 } },
-    },
-    {
-      id: 'temperature-local', family: 'instrumentation', group: 'temperature',
-      title: 'Thermomètre local',
-      usage: 'Lire la température directement sur l’équipement, sans transmission.',
-      keywords: 'temperature thermometre local cadran lecture',
-    },
-    {
-      id: 'pression-fuji', family: 'instrumentation', group: 'pression',
-      title: 'Transmetteur de pression',
-      maker: 'Fuji Electric', makerNote: 'Visuel du fabricant.',
-      usage: 'Suivre la pression d’une ligne et transmettre l’information vers un système de contrôle.',
-      keywords: 'pression transmetteur differentielle ligne fuji',
-      img: { src: PH + 'home-pressure-fuji.png', alt: 'Transmetteur de pression à tête bleue', crop: { iw: 682, ih: 682, x: 125, y: 28, w: 457, h: 654 } },
-    },
-    {
-      id: 'pression-manometre', family: 'instrumentation', group: 'pression',
-      title: 'Manomètre',
-      usage: 'Lire la pression sur place, sur un cadran.',
-      keywords: 'pression manometre cadran lecture locale',
-    },
-    {
-      id: 'signal-indicateur', family: 'signal', group: 'indicateurs',
-      title: 'Indicateur de process',
-      usage: 'Afficher une mesure à un endroit où l’opérateur peut la lire.',
-      keywords: 'indicateur afficheur signal lecture 4-20 boucle',
-    },
-    {
-      id: 'signal-convertisseur', family: 'signal', group: 'convertisseurs',
-      title: 'Convertisseur de signal',
-      usage: 'Adapter un signal de mesure pour qu’un autre appareil puisse le lire.',
-      keywords: 'convertisseur signal isolateur adaptation',
-    },
-    {
-      id: 'signal-regulateur', family: 'signal', group: 'regulateurs',
-      title: 'Régulateur de process',
-      usage: 'Maintenir une grandeur proche d’une valeur souhaitée.',
-      keywords: 'regulateur regulation consigne boucle',
-    },
-    {
-      id: 'signal-calibrateur', family: 'signal', group: 'calibrateurs',
-      title: 'Calibrateur de signal',
-      usage: 'Vérifier le bon fonctionnement d’une boucle de mesure.',
-      keywords: 'calibrateur calibration verification etalonnage',
-    },
-    {
-      id: 'signal-divers', family: 'signal', group: 'divers',
-      title: 'Accessoires de boucle de mesure',
-      usage: 'Compléter une boucle : alimentation, protection, câblage.',
-      keywords: 'accessoire alimentation protection divers boucle',
-    },
-    {
-      id: 'air-dropout', family: 'air', group: 'dropout',
-      title: 'Dropout, traitement d’air comprimé',
-      maker: 'Dropout', makerNote: 'Visuel issu de la plaquette fournie, détouré avec une amélioration assistée pour la maquette. Ce n’est pas une photo technique certifiée.',
-      usage: 'Traiter l’air comprimé pour retirer l’eau et les gouttelettes transportées par le réseau.',
-      keywords: 'dropout air comprime traitement separateur eau condensat gouttelettes',
-      img: { src: 'assets/dropout-cutout.png', alt: 'Corps cylindrique inox Dropout', crop: { iw: 455, ih: 1738, x: 32, y: 33, w: 391, h: 1673 } },
-    },
-    {
-      id: 'inox-raccord', family: 'inox', group: 'bagues',
-      title: 'Raccord à bagues inox',
-      usage: 'Relier un tube d’instrumentation à un équipement ou à une autre ligne.',
-      keywords: 'raccord bagues inox tube fitok instrumentation',
-    },
-    {
-      id: 'inox-vanne', family: 'inox', group: 'vannes',
-      title: 'Vanne inox d’instrumentation',
-      usage: 'Isoler ou régler une ligne de petit diamètre.',
-      keywords: 'vanne inox isolement fitok aiguille ligne',
-    },
-    {
-      id: 'inox-manifold', family: 'inox', group: 'manifolds',
-      title: 'Manifold',
-      usage: 'Isoler et purger un instrument de pression sans démonter la ligne.',
-      keywords: 'manifold isolement purge instrument pression',
-    },
-    {
-      id: 'inox-clapet', family: 'inox', group: 'clapets',
-      title: 'Clapet anti-retour',
-      usage: 'Empêcher un fluide de revenir en arrière dans une ligne.',
-      keywords: 'clapet anti retour sens fluide',
-    },
-    {
-      id: 'inox-detendeur', family: 'inox', group: 'detendeurs',
-      title: 'Détendeur',
-      usage: 'Abaisser et stabiliser la pression d’un fluide en aval.',
-      keywords: 'detendeur reduction pression aval gaz',
-    },
-    {
-      id: 'analyse-ph', family: 'analyse', group: 'ph',
-      title: 'Mesure de pH',
-      usage: 'Suivre l’acidité ou la basicité d’un liquide.',
-      keywords: 'ph acidite basicite analyse liquide eau electrode',
-    },
-    {
-      id: 'analyse-redox', family: 'analyse', group: 'redox',
-      title: 'Mesure de redox',
-      usage: 'Suivre le potentiel d’oxydoréduction d’un liquide, souvent lié à un traitement.',
-      keywords: 'redox orp oxydoreduction analyse liquide traitement',
-    },
-    {
-      id: 'analyse-chlore', family: 'analyse', group: 'chlore',
-      title: 'Mesure de chlore',
-      usage: 'Suivre la présence de chlore dans une eau.',
-      keywords: 'chlore eau desinfection analyse liquide',
-    },
-    {
-      id: 'analyse-conductivite', family: 'analyse', group: 'conductivite',
-      title: 'Mesure de conductivité',
-      usage: 'Suivre la quantité de substances dissoutes dans un liquide.',
-      keywords: 'conductivite salinite dissous analyse liquide eau',
-    },
-    {
-      id: 'associes-electrovanne', family: 'associes', group: 'electrovannes',
-      title: 'Électrovanne',
-      usage: 'Ouvrir ou fermer une ligne à partir d’un ordre électrique.',
-      keywords: 'electrovanne vanne electrique ouverture fermeture commande',
-    },
-    {
-      id: 'associes-pneumatique', family: 'associes', group: 'pneumatique',
-      title: 'Raccords et vannes pneumatiques',
-      usage: 'Raccorder et piloter un circuit d’air pour actionneurs et vannes.',
-      keywords: 'pneumatique raccord vanne air actionneur',
-    },
-    {
-      id: 'associes-tubing', family: 'associes', group: 'tubing',
-      title: 'Tubing',
-      usage: 'Acheminer un fluide ou un signal d’air entre deux points de l’installation.',
-      keywords: 'tubing tube tuyau liaison air fluide',
-    },
-  ],
-
-  dropout: {
-    title: 'Dropout, pour l’air comprimé',
-    intro: 'Une gamme dédiée au traitement de l’air comprimé.',
-    modes: [
-      {
-        id: 'besoin', label: 'Besoin',
-        title: 'Ce que l’air comprimé transporte',
-        text: 'Un réseau d’air comprimé transporte de l’humidité et de fines gouttelettes. Elles peuvent perturber les outils, les vannes et les instruments placés en aval. Le besoin : une installation qui retient ces gouttelettes avant qu’elles n’atteignent les équipements.',
-      },
-      {
-        id: 'principe', label: 'Principe',
-        title: 'Séparer les gouttelettes de l’air',
-        text: 'L’objectif général est de séparer les gouttelettes de l’air comprimé avant les équipements en aval. Le principe exact et les performances sont à vérifier dans la documentation du fabricant ; le schéma ci-contre reste illustratif.',
-      },
-    ],
-    note: 'Schéma illustratif, sans valeur de performance. Visuel issu de la plaquette fournie, détouré avec une amélioration assistée pour la maquette : ce n’est pas une photo technique certifiée.',
-    cta: 'Voir la fiche Dropout',
-    ctaChoose: 'Choisir pour ma demande',
-    imgAlt: 'Corps cylindrique inox de la gamme Dropout',
-    diagramLabel: 'Schéma illustratif du passage de l’air et de la séparation des gouttelettes',
-  },
-
-  applications: {
-    title: 'Des usages qui dépendent de votre secteur',
-    intro: 'Chaque installation a ses contraintes. Choisissez un secteur pour voir des pistes, à valider avec un conseiller avant tout choix.',
-    illustrative: 'Pistes illustratives, à valider avec un conseiller.',
-    seeIn: 'Voir dans les solutions',
-    sectors: [
-      {
-        id: 'chimie', label: 'Chimie / pétrochimie',
-        context: 'Fluides variés et installations exigeantes : on part du fluide, du matériau en contact et de la manière dont l’appareil sera raccordé.',
-        leads: [
-          { title: 'Niveau en réservoir', text: 'Suivre un stockage ou une colonne sans ouvrir l’équipement.', family: 'instrumentation', group: 'niveau' },
-          { title: 'Raccords et vannes inox', text: 'Relier et isoler des lignes d’instrumentation en matériau adapté au fluide.', family: 'inox', group: 'fitok' },
-          { title: 'Échantillonnage', text: 'Prélever un liquide pour en suivre la qualité.', family: 'analyse', group: 'ph' },
-        ],
-      },
-      {
-        id: 'siderurgie', label: 'Sidérurgie',
-        context: 'Des équipements soumis à la chaleur et aux poussières, avec beaucoup d’air comprimé et de fluides de refroidissement.',
-        leads: [
-          { title: 'Température', text: 'Suivre la chaleur de fluides de refroidissement ou d’équipements.', family: 'instrumentation', group: 'temperature' },
-          { title: 'Air comprimé', text: 'Protéger les équipements pneumatiques placés en aval.', family: 'air', group: 'dropout' },
-          { title: 'Pression', text: 'Surveiller les lignes d’utilités.', family: 'instrumentation', group: 'pression' },
-        ],
-      },
-      {
-        id: 'agro', label: 'Agroalimentaire',
-        context: 'Des liquides à suivre en continu, avec des exigences de nettoyage et de matériaux propres au site.',
-        leads: [
-          { title: 'Analyse de liquide', text: 'Suivre le pH ou la conductivité d’un liquide de procédé ou de rinçage.', family: 'analyse', group: 'conductivite' },
-          { title: 'Débit', text: 'Suivre le passage d’un liquide dans une conduite.', family: 'instrumentation', group: 'debit' },
-          { title: 'Température', text: 'Suivre la chaleur d’un procédé.', family: 'instrumentation', group: 'temperature' },
-        ],
-      },
-      {
-        id: 'pharma', label: 'Pharmacie',
-        context: 'Des fluides sensibles et un besoin de maîtriser les matériaux, les raccords et la qualité de l’eau.',
-        leads: [
-          { title: 'Analyse de liquide', text: 'Suivre la qualité d’une eau ou d’un liquide de procédé.', family: 'analyse', group: 'ph' },
-          { title: 'Raccords inox', text: 'Raccorder des lignes de petit diamètre.', family: 'inox', group: 'bagues' },
-          { title: 'Débit', text: 'Suivre la circulation d’un liquide.', family: 'instrumentation', group: 'debit' },
-        ],
-      },
-      {
-        id: 'energie', label: 'Énergie',
-        context: 'Des réseaux de fluides, de pression et de chaleur à surveiller, avec des signaux à transmettre vers un système de contrôle.',
-        leads: [
-          { title: 'Pression', text: 'Suivre la pression d’une ligne et transmettre l’information.', family: 'instrumentation', group: 'pression' },
-          { title: 'Température', text: 'Suivre la chaleur d’un fluide ou d’un équipement.', family: 'instrumentation', group: 'temperature' },
-          { title: 'Signal', text: 'Lire, convertir ou réguler les signaux de mesure.', family: 'signal', group: 'convertisseurs' },
-        ],
-      },
-    ],
-  },
-
-  conseil: {
-    title: 'Partons de votre installation',
-    intro: 'Pas besoin de connaître une référence. Partez de la situation qui ressemble à la vôtre : elle s’ajoute au contexte de votre demande, sans toucher à votre saisie.',
-    situationLabel: 'Situation',
-    situations: [
-      { id: 'remplacer', title: 'Remplacer un appareil', text: 'Un instrument est à changer. Notez ce que vous savez de l’ancien : marque, usage, raccordement, même partiel.', value: 'Remplacer un appareil existant', cta: 'Décrire l’appareil à remplacer', target: 'contact' },
-      { id: 'equiper', title: 'Équiper une installation', text: 'Une ligne, une cuve ou un réseau doit être mesuré ou contrôlé. Parcourez les familles pour repérer ce qui s’en approche.', value: 'Équiper une installation', cta: 'Explorer les solutions', target: 'solutions' },
-      { id: 'preciser', title: 'Préciser un besoin', text: 'Vous savez ce qu’il faut suivre, sans savoir par où commencer. Décrivez-le avec vos mots, un conseiller le reprendra avec vous.', value: 'Préciser un besoin', cta: 'Décrire mon besoin', target: 'contact' },
-    ],
-  },
-
-  entreprise: {
-    title: 'Votre interlocuteur en instrumentation, à Martigues',
-    text: 'Maturat Mesure distribue des instruments de mesure et de contrôle et conseille les équipes qui les installent et les exploitent. La société est implantée à Martigues et travaille avec des sites industriels de plusieurs secteurs.',
-    // Instruments superposés dans la composition visuelle (fiches de référence).
-    overlay: ['niveau-houdec', 'pression-fuji', 'temperature-fuji', 'debit-fuji'],
-    facts: [
-      { label: 'Rôle', value: 'Distribution et conseil en instrumentation' },
-      { label: 'Implantation', value: 'Martigues' },
-      { label: 'Secteurs', value: 'Chimie et pétrochimie, sidérurgie, agroalimentaire, pharmacie, énergie' },
-    ],
-  },
-
-  faq: {
-    title: 'Questions fréquentes',
-    items: [
-      { q: 'Dois-je connaître la référence de l’appareil ?', a: 'Non. Décrivez ce que vous voulez mesurer ou contrôler et dans quel type d’installation. Une famille ou une fiche d’exemple suffit pour commencer, une référence se confirme ensuite.' },
-      { q: 'Les fiches sont-elles des produits disponibles ?', a: 'Ce sont des exemples de présentation. Les visuels de fabricants servent d’illustration : la disponibilité et la référence exacte restent à confirmer avec Maturat Mesure.' },
-      { q: 'Maturat Mesure fabrique-t-il les instruments ?', a: 'La société distribue et conseille. Les marques et visuels présentés appartiennent à leurs fabricants.' },
-    ],
-  },
-
-  contact: {
-    title: 'Décrire mon besoin',
-    intro: 'Quelques lignes suffisent. Dans cette maquette, la demande n’est pas envoyée.',
-    contextTitle: 'Contexte sélectionné',
-    contextEmpty: 'Aucun contexte choisi. Décrivez votre besoin librement, ou explorez les solutions.',
-    contextRemove: 'Retirer',
-    contextRemoveFor: (label) => `Retirer : ${label}`,
-    contextExplore: 'Explorer les solutions',
-    fields: {
-      name: { label: 'Nom', error: 'Indiquez votre nom.' },
-      email: { label: 'Adresse e-mail', error: 'Indiquez une adresse e-mail valide, par exemple nom@entreprise.fr.' },
-      company: { label: 'Entreprise (facultatif)' },
-      message: { label: 'Votre besoin', hint: 'Fluide, installation, ce que vous voulez mesurer ou contrôler.', error: 'Décrivez votre besoin en quelques mots.' },
-    },
-    followups: {
-      title: (family) => `Précisions pour « ${family} »`,
-      hint: 'Facultatif. « Je ne sais pas » est une réponse tout à fait acceptée.',
-      placeholder: 'Facultatif, ou « je ne sais pas »',
-      empty: 'Non précisé',
-      byFamily: {
-        instrumentation: ['Fluide et mesure concernés', 'Installation (cuve, conduite, ligne…)'],
-        signal: ['Appareil ou signal existant', 'Résultat recherché'],
-        air: ['Réseau concerné', 'Besoin observé'],
-        inox: ['Fluide concerné', 'Raccord ou dimension connus'],
-        analyse: ['Liquide concerné', 'Paramètre à suivre'],
-        associes: ['Équipement concerné', 'Besoin'],
-      },
-    },
-    required: 'Les champs marqués d’un astérisque sont obligatoires.',
-    submit: 'Préparer ma demande',
-    summaryTitle: 'Demande préparée (démonstration)',
-    summaryText: 'Rien n’a été envoyé : cette maquette ne contacte aucun serveur. Voici le récapitulatif qui aurait été transmis.',
-    summaryEdit: 'Modifier ma demande',
-    summaryLabels: { name: 'Nom', email: 'E-mail', company: 'Entreprise', message: 'Besoin', situation: 'Situation', context: 'Contexte' },
-    summaryEmptyCompany: 'Non renseignée',
-    summaryEmptyContext: 'Aucun',
-  },
-
-  footer: {
-    lead: 'Maturat Mesure · Martigues',
-    resetLabel: 'Réinitialiser la démonstration',
-    resetDone: 'Démonstration réinitialisée.',
-    mention: 'Maquette de démonstration : textes proposés, aucun envoi réel.',
-    creditsButton: 'Crédits des visuels',
-    aboutButton: 'À propos de cette maquette',
-    closeLabel: 'Fermer',
-    aboutTitle: 'À propos de cette maquette',
-    limits: [
-      'Exploration de maquette : les textes sont des propositions et rien n’est envoyé.',
-      'Les sélections et la saisie restent en mémoire de la page, sans enregistrement durable. Elles disparaissent en rechargeant la page ou avec le bouton de réinitialisation.',
-      'Les fiches sont des exemples de présentation : aucune disponibilité, référence ou caractéristique n’est garantie.',
-      'Aucune coordonnée réelle n’est affichée. Le contact passe par la demande simulée.',
-    ],
-    creditsTitle: 'Crédits des visuels',
-    credits: [
-      { name: 'Houdec', href: 'https://www.houdec.com/indicateurs-de-niveau', text: 'Visuel de l’indicateur de niveau, illustration issue de la page Indicateurs de niveau.' },
-      { name: 'Fuji Electric', href: 'https://www.fujielectric.fr/', text: 'Visuels du débitmètre, de la sonde de température et du transmetteur de pression : visuels fabricant, droits réservés. Aucune autorisation de publication générale n’est affirmée.' },
-      { name: 'Dropout', text: 'Visuel issu de la plaquette fournie, avec amélioration assistée pour la maquette et détourage. Ce n’est pas une photo technique certifiée.' },
-      { name: 'Police Instrument Sans', text: 'Servie localement sous licence SIL Open Font License 1.1.', href: 'assets/fonts/OFL.txt', local: true, extra: { label: 'Notices', href: 'assets/fonts/NOTICES.txt' } },
-      { name: 'Contenus sous licence Creative Commons', text: 'Aucun n’est utilisé dans cette copie.' },
-    ],
-  },
+export const BASE_ASSETS = {
+  logo: 'assets/maturat-logo.png',
+  atlas: 'assets/product-atlas.png',
+  pdf: 'assets/documents/fiche-demonstration.pdf',
+  photoPipes: 'assets/photos/industrial-pipes.jpg',
+  photoBlue: 'assets/photos/industrial-blue.jpg',
 };
+
+// Atlas 4 colonnes x 3 lignes, lecture ligne par ligne. Produits fictifs.
+export const ATLAS = [
+  'Niveau magnétique',
+  'Débitmètre ultrasonique',
+  'Sonde de température',
+  'Transmetteur de pression',
+  'Convertisseur de signal',
+  'Régulateur',
+  'Séparateur air',
+  'Vanne inox',
+  'Sonde d’analyse liquide',
+  'Téléphone industriel',
+  'Raccords pneumatiques',
+  'Bobine de tubing inox',
+];
+
+export const SITE = {
+  name: 'Maturat Mesure',
+  banner: 'Maquette · données fictives · aucun envoi ni conservation réelle',
+  adminLink: 'Administration de démonstration',
+  nav: [
+    { route: '/catalogue', label: 'Catalogue' },
+    { route: '/dropout', label: 'Dropout' },
+    { route: '/fournisseurs', label: 'Fournisseurs', feature: 'showSuppliers' },
+    { route: '/entreprise', label: 'Entreprise' },
+    { route: '/faq', label: 'Questions' },
+  ],
+  cta: 'Décrire mon besoin',
+  mobile: 'Cette maquette se consulte sur ordinateur. Ouvrez ce lien sur un écran plus large pour découvrir le site.',
+};
+
+export const HOME = {
+  title: 'Mesurer. Contrôler. Maîtriser vos procédés.',
+  intro: 'Instrumentation et solutions de contrôle pour vos procédés industriels. Définissons ensemble la solution adaptée à votre application.',
+  primary: 'Explorer le catalogue',
+  secondary: 'Décrire mon besoin',
+  measuresLabel: 'Quatre grandeurs, un même savoir-faire',
+  measures: [
+    { id: 'niveau', unit: 'm', label: 'Niveau', cell: 0, text: 'Mesurer et détecter le niveau de liquides ou de solides, selon les contraintes du procédé.' },
+    { id: 'debit', unit: 'm³/h', label: 'Débit', cell: 1, text: 'Suivre le débit d’un fluide avec une technologie cohérente avec le procédé.' },
+    { id: 'temperature', unit: '°C', label: 'Température', cell: 2, text: 'Suivre la température de votre installation et choisir le principe de mesure adapté.' },
+    { id: 'pression', unit: 'bar', label: 'Pression', cell: 3, text: 'Mesurer la pression de vos fluides, au plus près de votre application.' },
+  ],
+  measureNote: 'Visuels d’illustration de produits fictifs. Aucune référence n’est garantie.',
+  domainsTitle: 'Sept domaines, un seul interlocuteur',
+  domainsIntro: 'Du capteur au raccord, des signaux aux mesures de laboratoire : chaque domaine regroupe des familles et des exemples de fiches.',
+  featuredTitle: 'Produits à la une',
+  featuredIntro: 'Deux exemples de fiches mises en avant. Dans l’administration de démonstration, ce choix se règle fiche par fiche.',
+  dropout: {
+    kicker: 'Traitement d’air',
+    title: 'Dropout : l’eau liquide hors de vos circuits d’air',
+    text: 'Condensats et gouttes d’eau dans l’air comprimé fragilisent instruments, régulateurs et actionneurs. Un séparateur Dropout intervient là où l’eau liquide pose problème. Nous précisons ensemble si c’est la bonne réponse à votre installation.',
+    points: ['Eau liquide et condensats : le problème traité', 'Humidité de vapeur : une autre réponse, à discuter', 'Dimensionnement et installation : à confirmer'],
+    cta: 'Comprendre le principe',
+  },
+  applicationsTitle: 'Des instruments pour vos contextes d’application',
+  applicationsIntro: 'Quelques situations fréquentes, données comme exemples de lecture et non comme références clients.',
+  applications: [
+    { id: 'eau', title: 'Eau et environnement', text: 'Niveau de cuves et bassins, débit en conduite, analyse pH, redox, chlore ou conductivité.', links: [['instrumentation', 'niveau'], ['analyse-liquide', null]] },
+    { id: 'energie', title: 'Énergie et utilités', text: 'Pression, température, régulation, air comprimé et condensats.', links: [['instrumentation', 'pression'], ['traitement-air', null]] },
+    { id: 'procede', title: 'Chimie et procédés', text: 'Raccords et vannes inox, échantillonnage, contrôle du signal entre le terrain et la salle de contrôle.', links: [['raccords-inox', null], ['controle-signal', null]] },
+    { id: 'terrain', title: 'Maintenance et terrain', text: 'Outils de terrain en zone à risque, applications HART, calibration et vérification.', links: [['smart-connexion', null], ['controle-signal', 'calibrateurs']] },
+  ],
+  suppliersTitle: 'Un réseau de fournisseurs',
+  suppliersIntro: 'Les fournisseurs ci-dessous sont des exemples fictifs de présentation. La vraie liste est à renseigner.',
+  companyTitle: 'Distribution et conseil en instrumentation',
+  companyText: 'Maturat Mesure sélectionne, distribue et conseille. L’objectif est de vous aider à choisir un instrument cohérent avec votre application, puis de vous accompagner dans le choix du bon interlocuteur chez le fournisseur.',
+  faqTitle: 'Questions fréquentes',
+  contactTitle: 'Parlons de votre application',
+  contactText: 'Décrivez votre besoin en quelques mots, ou dites simplement que vous ne savez pas encore quoi choisir. Un conseiller reprendra le sujet avec vous.',
+};
+
+export const COMPANY = {
+  roles: [
+    { title: 'Distribuer', text: 'Mettre à disposition des instruments et des composants de fournisseurs sélectionnés, avec leurs documents.' },
+    { title: 'Conseiller', text: 'Aider à passer d’un besoin parfois flou à une famille de solutions et aux bonnes questions à poser.' },
+    { title: 'Accompagner', text: 'Rester l’interlocuteur entre votre installation et le fournisseur, de la demande à la mise en œuvre.' },
+  ],
+  method: [
+    { title: 'Comprendre l’application', text: 'Fluide, environnement, contraintes de montage : le contexte avant la référence.' },
+    { title: 'Proposer une direction', text: 'Une famille de produits et quelques options, avec leurs limites.' },
+    { title: 'Confirmer avec le fournisseur', text: 'Les caractéristiques sont vérifiées avant toute décision.' },
+    { title: 'Suivre la mise en œuvre', text: 'Un point de contact pour les questions qui suivent.' },
+  ],
+  intro: 'Maturat Mesure est un distributeur et un conseil en instrumentation. Cette page présente la manière de travailler, sans chiffres ni références clients tant qu’ils n’ont pas été fournis.',
+};
+
+export const SETTINGS = {
+  contact: { email: 'contact@example.test', phone: '00 00 00 00 00', address: 'Adresse illustrative, à remplacer · 00000 Ville exemple', hours: 'Horaires à renseigner (exemple : du lundi au vendredi)' },
+  seo: { title: 'Maturat Mesure · maquette', description: 'Maquette du site de Maturat Mesure, distribution et conseil en instrumentation.', ogTitle: 'Maturat Mesure · maquette' },
+  features: { showSuppliers: true, showNews: true, showRecruitment: true, showPdf: true, requestForm: true, showFaqHome: true },
+  social: { linkedin: '', youtube: '' },
+  company: { legalName: 'Maturat Mesure', footerText: 'Distribution et conseil en instrumentation industrielle.', footerNote: 'Maquette de démonstration : textes et données à remplacer.' },
+};
+
+// Adresse interne : séparée des réglages publics, jamais affichée sur le site.
+export const INTERNAL = { notifyEmail: 'reception-interne@example.test' };
+
+export const FAMILIES = [
+  { id: 'instrumentation', title: 'Instrumentation', cell: 0, short: 'Niveau, débit, température, pression.', description: 'Les quatre grandeurs de base d’un procédé. Chaque sous-famille regroupe des principes de mesure à comparer selon le fluide, la plage et le montage.', groups: [
+    { id: 'niveau', title: 'Niveau', text: 'Liquides et solides, mesure continue ou détection.' },
+    { id: 'debit', title: 'Débit', text: 'Principes de mesure selon le fluide et la conduite.' },
+    { id: 'temperature', title: 'Température', text: 'Sondes et capteurs pour installations de procédé.' },
+    { id: 'pression', title: 'Pression', text: 'Transmetteurs et capteurs au plus près du procédé.' } ] },
+  { id: 'controle-signal', title: 'Contrôle du signal', cell: 4, short: 'Indicateurs, convertisseurs, régulateurs, calibrateurs.', description: 'Tout ce qui traite, affiche, convertit ou vérifie un signal entre le terrain et la salle de contrôle.', groups: [
+    { id: 'indicateurs', title: 'Indicateurs', text: 'Affichage local ou en face avant.' },
+    { id: 'convertisseurs', title: 'Convertisseurs', text: 'Isolation et conversion de signaux.' },
+    { id: 'regulateurs', title: 'Régulateurs', text: 'Boucles de régulation de procédé.' },
+    { id: 'calibrateurs', title: 'Calibrateurs', text: 'Vérification et étalonnage.' },
+    { id: 'divers', title: 'Divers', text: 'Autres équipements de signal.' } ] },
+  { id: 'traitement-air', title: 'Traitement d’air', cell: 6, short: 'Séparation de l’eau liquide : Dropout.', description: 'Protéger instruments, régulateurs et actionneurs de l’eau liquide présente dans l’air de service.', groups: [
+    { id: 'dropout', title: 'Dropout', text: 'Séparateurs d’eau liquide pour air comprimé.' } ] },
+  { id: 'raccords-inox', title: 'Raccords inox & contrôle des fluides', cell: 7, short: 'Raccords à bagues, vannes, manifolds, clapets, détendeurs.', description: 'Composants inox pour raccorder, isoler et contrôler les fluides d’une installation.', groups: [
+    { id: 'raccords-bagues', title: 'Raccords à bagues', text: 'Raccordement de tubes inox.' },
+    { id: 'vannes', title: 'Vannes', text: 'Isolement et régulation manuelle.' },
+    { id: 'manifolds', title: 'Manifolds', text: 'Ensembles de vannes pour instrumentation.' },
+    { id: 'clapets', title: 'Clapets', text: 'Anti-retour et sécurité.' },
+    { id: 'detendeurs', title: 'Détendeurs', text: 'Réduction et stabilisation de pression.' } ] },
+  { id: 'analyse-liquide', title: 'Échantillonnage & analyse liquide', cell: 8, short: 'pH, redox, chlore, conductivité.', description: 'Mesures d’analyse en ligne ou prélevées pour suivre la qualité d’un liquide.', groups: [
+    { id: 'ph', title: 'pH', text: 'Acidité et basicité.' },
+    { id: 'redox', title: 'Redox', text: 'Potentiel d’oxydo-réduction.' },
+    { id: 'chlore', title: 'Chlore', text: 'Suivi de désinfectant.' },
+    { id: 'conductivite', title: 'Conductivité', text: 'Charge ionique d’un liquide.' } ] },
+  { id: 'smart-connexion', title: 'Smart connexion', cell: 9, short: 'Tablettes et téléphones ATEX, applications HART et DATI.', description: 'Outils numériques de terrain, y compris pour les zones à atmosphère explosive, et applications de configuration.', groups: [
+    { id: 'atex', title: 'Tablettes et téléphones ATEX', text: 'Terminaux conçus pour les zones à risque.' },
+    { id: 'apps', title: 'Applications HART / DATI', text: 'Configuration et diagnostic des instruments.' } ] },
+  { id: 'produits-associes', title: 'Produits associés', cell: 10, short: 'Électrovannes, raccords et vannes pneumatiques, tubing.', description: 'Compléments d’installation : commande pneumatique et tubes.', groups: [
+    { id: 'electrovannes', title: 'Électrovannes', text: 'Commande de fluides à distance.' },
+    { id: 'pneumatique', title: 'Raccords et vannes pneumatiques', text: 'Circuit d’air de commande.' },
+    { id: 'tubing', title: 'Tubing', text: 'Tubes inox au mètre ou en bobine.' } ] },
+];
+
+export const SUPPLIERS = [
+  { id: 'exemple-instruments', name: 'Exemple Instruments', published: true, specialty: 'Mesure de niveau, débit et pression', text: 'Fournisseur fictif présenté pour illustrer une fiche fournisseur. Son contenu sera remplacé par les fournisseurs réels.' },
+  { id: 'demo-fluides', name: 'Démo Fluides', published: true, specialty: 'Raccords, vannes et traitement d’air', text: 'Fournisseur fictif. Sert à montrer le lien entre un fournisseur et ses fiches.' },
+  { id: 'modele-analyse', name: 'Modèle Analyse', published: true, specialty: 'Analyse de liquides', text: 'Fournisseur fictif pour les mesures pH, redox, chlore et conductivité.' },
+  { id: 'studio-signal', name: 'Studio Signal', published: true, specialty: 'Signal, terrain et connectivité', text: 'Fournisseur fictif pour les convertisseurs, régulateurs et outils de terrain.' },
+];
+
+const SPECS_NOTE = 'Valeurs et caractéristiques d’exemple, fictives : à remplacer par la fiche réelle du fournisseur.';
+export const PRODUCT_NOTE = SPECS_NOTE;
+
+export const PRODUCTS = [
+  { id: 'niveau-magnetique', title: 'Indicateur de niveau magnétique', ref: 'DEMO-NIV-100', supplier: 'exemple-instruments', family: 'instrumentation', group: 'niveau', status: 'publie', featured: true, cell: 0, document: true,
+    summary: 'Lecture directe du niveau sur une cuve, sans énergie à l’affichage.',
+    usage: 'Cuves et réservoirs où une lecture visuelle fiable est utile à l’opérateur.',
+    description: 'Fiche d’exemple. Un flotteur aimanté entraîne un indicateur visuel placé le long d’une chambre. Le choix des matériaux, de la plage et du raccordement dépend du liquide et du montage.',
+    specs: [['Principe', 'Flotteur aimanté et indicateur'], ['Lecture', 'Visuelle, directe'], ['Matériaux', 'À confirmer selon le fluide'], ['Raccordement', 'Selon l’installation']],
+    applications: ['Cuves de stockage', 'Réservoirs intermédiaires', 'Bacs de procédé'], models: [] },
+  { id: 'debitmetre-ultrasonique', title: 'Débitmètre ultrasonique', ref: 'DEMO-DEB-200', supplier: 'exemple-instruments', family: 'instrumentation', group: 'debit', status: 'publie', featured: true, cell: 1, document: false,
+    summary: 'Gamme de débitmètres sans pièce mobile dans la conduite.',
+    usage: 'Mesure du débit de liquides propres en conduite, selon la gamme retenue.',
+    description: 'Fiche de gamme d’exemple : elle présente trois modèles fictifs pour comprendre comment une famille se décline, sans configurer de variantes. Le choix dépend du diamètre de la conduite et du fluide.',
+    specs: [['Principe', 'Temps de transit ultrasonique'], ['Pièces mobiles', 'Aucune dans la conduite'], ['Fluides', 'Liquides, à confirmer'], ['Sortie', 'Selon le modèle']],
+    applications: ['Eau de procédé', 'Boucles de circulation', 'Bilan de consommation'],
+    models: [['Modèle S', 'Pour petites conduites. Exemple fictif.'], ['Modèle M', 'Pour conduites intermédiaires. Exemple fictif.'], ['Modèle C', 'À pince, pour mesure sans coupure du circuit. Exemple fictif.']] },
+  { id: 'sonde-temperature', title: 'Sonde de température à tête de raccordement', ref: 'DEMO-TEM-300', supplier: 'exemple-instruments', family: 'instrumentation', group: 'temperature', status: 'publie', featured: false, cell: 2, document: false,
+    summary: 'Sonde de procédé avec tête de raccordement.',
+    usage: 'Suivi de température de fluides en conduite ou en cuve.',
+    description: 'Fiche d’exemple. La longueur de plongée, la gaine et le principe de capteur sont à définir avec vous selon le fluide et la plage de température.',
+    specs: [['Montage', 'Plongeante, avec tête'], ['Longueur', 'À définir'], ['Signal', 'À définir selon l’installation']],
+    applications: ['Conduites de procédé', 'Cuves', 'Échangeurs'], models: [] },
+  { id: 'transmetteur-pression', title: 'Transmetteur de pression', ref: 'DEMO-PRE-400', supplier: 'exemple-instruments', family: 'instrumentation', group: 'pression', status: 'publie', featured: false, cell: 3, document: false,
+    summary: 'Gamme de transmetteurs avec affichage local selon le modèle.',
+    usage: 'Mesure de pression relative ou différentielle dans un procédé.',
+    description: 'Fiche de gamme d’exemple, avec deux familles fictives de transmetteurs. Plage, précision et raccords ne sont pas indiqués : ils dépendent du projet.',
+    specs: [['Principe', 'Capteur et électronique de transmission'], ['Affichage', 'Local, selon le modèle'], ['Plage', 'À définir']],
+    applications: ['Réseaux de fluide', 'Réservoirs sous pression', 'Contrôle de filtres'],
+    models: [['Série relative', 'Pression relative. Exemple fictif.'], ['Série différentielle', 'Écart de pression entre deux points. Exemple fictif.']] },
+  { id: 'convertisseur-signal', title: 'Convertisseur de signal isolé', ref: 'DEMO-SIG-500', supplier: 'studio-signal', family: 'controle-signal', group: 'convertisseurs', status: 'publie', featured: false, cell: 4, document: false,
+    summary: 'Isolation et conversion d’un signal de mesure.',
+    usage: 'Adapter ou isoler un signal entre un capteur et un automate.',
+    description: 'Fiche d’exemple. Type de signal d’entrée et de sortie, alimentation et montage à préciser selon l’installation.',
+    specs: [['Fonction', 'Conversion et isolation'], ['Montage', 'Rail, à confirmer'], ['Signaux', 'À définir']],
+    applications: ['Armoires de contrôle', 'Remplacement d’un équipement', 'Mise en conformité d’un signal'], models: [] },
+  { id: 'dropout-separateur', title: 'Séparateur d’eau liquide Dropout', ref: 'DEMO-AIR-600', supplier: 'demo-fluides', family: 'traitement-air', group: 'dropout', status: 'publie', featured: false, cell: 6, document: false,
+    summary: 'Sépare l’eau liquide d’un circuit d’air comprimé.',
+    usage: 'Protéger des instruments et régulateurs pneumatiques de l’eau liquide et des condensats.',
+    description: 'Fiche d’exemple. Un séparateur traite l’eau liquide ; il ne remplace pas une solution de séchage si l’humidité de la vapeur d’eau est le problème. Dimensionnement, entretien et installation à confirmer avec le fournisseur.',
+    specs: [['Fonction', 'Séparation de l’eau liquide'], ['Fluide', 'Air comprimé'], ['Entretien', 'À préciser'], ['Dimensionnement', 'Selon débit et pression']],
+    applications: ['Air d’instrumentation', 'Alimentation de régulateurs', 'Lignes pneumatiques'], models: [] },
+  { id: 'vanne-inox', title: 'Vanne inox à boisseau', ref: 'DEMO-VAN-700', supplier: 'demo-fluides', family: 'raccords-inox', group: 'vannes', status: 'publie', featured: false, cell: 7, document: false,
+    summary: 'Vanne d’isolement en inox.',
+    usage: 'Isoler une ligne d’instrumentation ou un point de prélèvement.',
+    description: 'Fiche d’exemple. Matériaux d’étanchéité, pression de service et raccordements à confirmer pour votre fluide.',
+    specs: [['Fonction', 'Isolement'], ['Matériau', 'Inox, à confirmer'], ['Raccords', 'À définir']],
+    applications: ['Isolement d’instruments', 'Points de prélèvement', 'Lignes de procédé'], models: [] },
+  { id: 'sonde-ph', title: 'Sonde de pH et redox pour ligne', ref: 'DEMO-ANA-800', supplier: 'modele-analyse', family: 'analyse-liquide', group: 'ph', status: 'publie', featured: false, cell: 8, document: false,
+    summary: 'Sonde d’analyse liquide pour suivi en ligne.',
+    usage: 'Suivre le pH d’un liquide, avec une variante redox possible selon le besoin.',
+    description: 'Fiche d’exemple. Le choix de la sonde dépend du liquide, de sa température et de la fréquence de maintenance souhaitée.',
+    specs: [['Mesure', 'pH, redox selon la version'], ['Montage', 'En ligne ou par immersion'], ['Maintenance', 'À préciser']],
+    applications: ['Traitement d’eau', 'Procédés de lavage', 'Contrôle qualité'], models: [] },
+  { id: 'telephone-atex', title: 'Téléphone industriel ATEX', ref: 'DEMO-SMA-900', supplier: 'studio-signal', family: 'smart-connexion', group: 'atex', status: 'publie', featured: false, cell: 9, document: false,
+    summary: 'Terminal de terrain pour zones à atmosphère explosive.',
+    usage: 'Accompagner les interventions et la configuration d’instruments sur site.',
+    description: 'Fiche d’exemple. Les zones d’usage et les marquages exacts ne sont pas indiqués ici : ils sont à confirmer sur la fiche du fournisseur.',
+    specs: [['Usage', 'Terrain, zones à risque'], ['Marquage', 'À confirmer'], ['Applications', 'HART et DATI selon configuration']],
+    applications: ['Mise en service', 'Maintenance', 'Tournées de contrôle'], models: [] },
+  { id: 'raccords-pneumatiques', title: 'Raccords pneumatiques', ref: 'DEMO-ASS-1000', supplier: 'demo-fluides', family: 'produits-associes', group: 'pneumatique', status: 'publie', featured: false, cell: 10, document: false,
+    summary: 'Raccords pour circuits d’air de commande.',
+    usage: 'Raccorder des vannes et actionneurs pneumatiques.',
+    description: 'Fiche d’exemple. Diamètres, filetages et matériaux sont à définir selon votre circuit.',
+    specs: [['Fonction', 'Raccordement pneumatique'], ['Diamètres', 'À définir'], ['Matériau', 'À confirmer']],
+    applications: ['Actionneurs', 'Armoires pneumatiques', 'Maintenance'], models: [] },
+];
+
+export const REQUESTS = [
+  { id: 'DEM-DEMO-001', date: '2026-10-28', status: 'Nouvelle', name: 'Camille Exemple', email: 'camille@example.test', phone: '', company: 'Entreprise fictive', rubrique: 'instrumentation', productId: 'debitmetre-ultrasonique', need: 'Besoin fictif : suivre un débit d’eau de procédé.', unknown: false, sector: 'Eau et environnement', fluid: 'Liquide', context: '', note: '' },
+  { id: 'DEM-DEMO-002', date: '2026-10-27', status: 'En cours', name: 'Alex Démo', email: 'alex@example.test', phone: '00 00 00 00 00', company: '', rubrique: 'traitement-air', productId: '', need: 'Besoin fictif : de l’eau arrive dans un circuit d’air.', unknown: false, sector: 'Je ne sais pas', fluid: 'Gaz', context: 'Exemple de contexte.', note: 'Note interne fictive : rappeler pour préciser le circuit.' },
+  { id: 'DEM-DEMO-003', date: '2026-10-25', status: 'Traitée', name: 'Sam Maquette', email: 'sam@example.test', phone: '', company: 'Société d’exemple', rubrique: '', productId: '', need: '', unknown: true, sector: '', fluid: '', context: '', note: '' },
+];
+
+export const REQUEST_STATUSES = ['Nouvelle', 'En cours', 'Traitée', 'Archivée'];
+
+export const FAQ = [
+  { id: 'faq-1', group: 'Choisir un produit', q: 'Je ne sais pas quel instrument choisir. Que faire ?', a: 'Décrivez votre application avec vos mots, ou indiquez simplement que vous ne savez pas. Le formulaire ne demande aucun champ technique obligatoire.', published: true },
+  { id: 'faq-2', group: 'Choisir un produit', q: 'Les fiches contiennent-elles toutes les caractéristiques ?', a: 'Les fiches de la maquette sont des exemples fictifs. Sur le vrai site, les caractéristiques seront confirmées avec le fournisseur avant toute décision.', published: true },
+  { id: 'faq-3', group: 'Choisir un produit', q: 'Qu’est-ce qu’une fiche de gamme ?', a: 'Une fiche qui présente plusieurs modèles voisins pour comprendre comment ils se distinguent, sans configurer de variantes.', published: true },
+  { id: 'faq-4', group: 'Votre demande', q: 'Que devient ma demande ?', a: 'Dans cette maquette, rien n’est envoyé ni conservé : la confirmation est simulée et la demande apparaît seulement dans l’administration de démonstration, dans cet onglet.', published: true },
+  { id: 'faq-5', group: 'Votre demande', q: 'Puis-je demander plusieurs produits à la fois ?', a: 'La demande se concentre sur un besoin. Vous pouvez décrire plusieurs produits dans le champ de besoin.', published: true },
+  { id: 'faq-6', group: 'Votre demande', q: 'Puis-je joindre un document ?', a: 'Pas dans cette version : décrivez votre besoin et un conseiller vous indiquera comment transmettre un document si nécessaire.', published: true },
+  { id: 'faq-7', group: 'À propos de la maquette', q: 'Les prix sont-ils affichés ?', a: 'Non. Aucun prix n’est affiché : les offres se construisent à partir de la demande.', published: true },
+  { id: 'faq-8', group: 'À propos de la maquette', q: 'Que se passe-t-il quand je recharge la page ?', a: 'La démonstration revient à son état initial : les modifications faites dans l’administration sont perdues.', published: true },
+];
+
+export const PAGES = [
+  { id: 'accueil', route: '/', label: 'Accueil', model: 'Accueil', status: 'publie', title: HOME.title, intro: HOME.intro },
+  { id: 'catalogue', route: '/catalogue', label: 'Catalogue', model: 'Liste filtrable', status: 'publie', title: 'Catalogue', intro: 'Dix fiches d’exemple pour explorer la présentation. Cherchez par nom ou référence, ou filtrez par rubrique, sous-famille et fournisseur.' },
+  { id: 'dropout', route: '/dropout', label: 'Dropout', model: 'Éditorial', status: 'publie', title: 'Dropout, séparer l’eau liquide de l’air', intro: 'Quand de l’eau liquide circule dans un circuit d’air, instruments et actionneurs en subissent les effets. Voici le problème, le principe et ses limites.' },
+  { id: 'fournisseurs', route: '/fournisseurs', label: 'Fournisseurs', model: 'Liste', status: 'publie', title: 'Fournisseurs', intro: 'Exemples fictifs de présentation de fournisseurs et des fiches qui leur sont rattachées.' },
+  { id: 'entreprise', route: '/entreprise', label: 'Entreprise', model: 'Éditorial', status: 'publie', title: 'Un distributeur qui conseille', intro: COMPANY.intro },
+  { id: 'faq', route: '/faq', label: 'Questions', model: 'FAQ', status: 'publie', title: 'Questions fréquentes', intro: 'Les réponses aux questions les plus courantes avant de décrire votre besoin.' },
+  { id: 'demande', route: '/demande', label: 'Demande / contact', model: 'Formulaire guidé', status: 'publie', title: 'Décrire mon besoin', intro: 'Quelques étapes courtes. Rien n’est obligatoire sur le plan technique : dites ce que vous savez.' },
+  { id: 'actualites', route: '/actualites', label: 'Actualités', model: 'Bientôt', status: 'publie', title: 'Actualités', intro: 'Cette rubrique est en préparation. Les actualités de Maturat Mesure seront publiées ici.' },
+  { id: 'recrutement', route: '/recrutement', label: 'Recrutement', model: 'Bientôt', status: 'publie', title: 'Recrutement', intro: 'Cette page est en préparation. Aucune offre n’est publiée pour le moment.' },
+  { id: 'mentions-legales', route: '/mentions-legales', label: 'Mentions légales', model: 'Texte légal', status: 'publie', title: 'Mentions légales', intro: 'Texte de démonstration à remplacer par les mentions légales réelles.' },
+  { id: 'confidentialite', route: '/confidentialite', label: 'Confidentialité', model: 'Texte légal', status: 'publie', title: 'Confidentialité', intro: 'Texte de démonstration à remplacer par la politique de confidentialité réelle.' },
+  { id: 'credits', route: '/credits', label: 'Crédits et limites', model: 'Texte légal', status: 'publie', title: 'Crédits et limites', intro: 'Origine des visuels et limites de cette maquette.' },
+];
+
+export const MEDIA = [
+  { id: 'logo', file: 'assets/maturat-logo.png', name: 'Logo Maturat Mesure', usage: 'En-tête, message ordinateur', rights: 'Logo existant de la marque.' },
+  { id: 'hero', file: 'assets/hero-blue-grain.png', name: 'Fond bleu grainé', usage: 'Ouverture de l’accueil et bandeaux de pages', rights: 'Fond graphique existant de la maquette.' },
+  { id: 'grain', file: 'assets/surface-grain.svg', name: 'Grain de surface', usage: 'Sections pâles', rights: 'Motif graphique existant de la maquette.' },
+  { id: 'atlas', file: 'assets/product-atlas.png', name: 'Atlas de produits (12 visuels)', usage: 'Fiches, rubriques, accueil', rights: 'Illustrations originales de produits fictifs, sans lien avec un fabricant.' },
+  { id: 'pipes', file: 'assets/photos/industrial-pipes.jpg', name: 'Photo de canalisations industrielles', usage: 'Applications, entreprise', rights: 'Photo Unsplash : crédit exact dans assets/CREDITS-MEDIA.md.' },
+  { id: 'blue', file: 'assets/photos/industrial-blue.jpg', name: 'Photo industrielle bleue', usage: 'Dropout, entreprise', rights: 'Photo Unsplash : crédit exact dans assets/CREDITS-MEDIA.md.' },
+  { id: 'pdf', file: 'assets/documents/fiche-demonstration.pdf', name: 'Fiche de démonstration (PDF)', usage: 'Téléchargement depuis les fiches qui en disposent', rights: 'Document d’exemple, sans information réelle.', pdf: true },
+];
+
+export const LEGAL = {
+  'mentions-legales': [
+    ['Éditeur', 'Maturat Mesure. Forme juridique, numéro d’immatriculation et adresse : à renseigner. Rien n’est affirmé dans cette maquette.'],
+    ['Hébergement', 'Maquette hébergée à titre de démonstration. Informations d’hébergeur à renseigner pour le site réel.'],
+    ['Contact', 'Les coordonnées affichées sont fictives (example.test, 00 00 00 00 00).'],
+  ],
+  confidentialite: [
+    ['Données', 'Dans cette maquette, rien n’est envoyé ni enregistré durablement : les saisies existent seulement en mémoire de l’onglet et disparaissent au rechargement.'],
+    ['Site réel', 'La politique réelle (finalités, durée de conservation, droits) est à rédiger avec Maturat Mesure avant toute mise en ligne. Aucune durée n’est annoncée ici.'],
+    ['Cookies', 'La maquette n’utilise ni cookie ni stockage du navigateur.'],
+  ],
+  credits: [
+    ['Typographie', 'Instrument Sans, police sous licence SIL Open Font License (fichiers et licence dans assets/fonts/).'],
+    ['Produits', 'Les visuels de produits sont des illustrations originales de produits fictifs. Ils ne représentent aucun appareil d’un fabricant précis.'],
+    ['Fournisseurs et références', 'Les fournisseurs, références, caractéristiques et demandes sont fictifs.'],
+    ['Document PDF', 'La fiche de démonstration téléchargeable est un exemple sans information réelle.'],
+    ['Limites', 'La maquette est destinée à être consultée sur ordinateur. Aucune donnée n’est transmise ni conservée.'],
+  ],
+};
+
+export const CREDITS_MEDIA_FILE = 'assets/CREDITS-MEDIA.md';
