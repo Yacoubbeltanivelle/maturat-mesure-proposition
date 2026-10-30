@@ -54,7 +54,7 @@ export function home() {
           h('h3', {}, link(`/produit/${p.id}`, p.title)),
           h('p', { text: p.summary }),
           h('p', { class: 'meta', text: `${p.ref} · ${S.supplierName(p.supplier)}` }),
-          h('div', { class: 'actions' }, link(`/produit/${p.id}`, 'Voir la fiche', 'btn btn--quiet'), link('/demande', 'Demander ce produit', 'btn btn--primary', { produit: p.id })))))) :
+          h('div', { class: 'actions' }, link(`/produit/${p.id}`, 'Voir la fiche', 'btn btn--quiet'), link('/demande', SITE.productCta, 'btn btn--primary', { produit: p.id })))))) :
         emptyState('Aucune fiche à la une', 'Dans l’administration de démonstration, cochez « À la une » sur une fiche publiée.', link('/admin/catalogue', 'Ouvrir le catalogue de démonstration', 'btn btn--quiet'))));
 
   const d = HOME.dropout;
@@ -223,10 +223,11 @@ export function produit({ params }) {
       h('div', { class: 'product__copy' },
         h('p', { class: 'kicker', text: S.productPath(p) }),
         h('h1', { text: p.title, tabindex: '-1' }),
-        h('p', { class: 'meta' }, h('span', { text: `Réf. ${p.ref}` }), ' · ', link(`/fournisseur/${p.supplier}`, S.supplierName(p.supplier))),
+        h('p', { class: 'meta' }, h('span', { text: `${p.models.length ? 'Réf. de gamme' : 'Réf.'} ${p.ref}` }), ' · ', link(`/fournisseur/${p.supplier}`, S.supplierName(p.supplier))),
         h('p', { class: 'lede', text: p.summary }),
-        h('div', { class: 'actions' }, link('/demande', 'Demander ce produit', 'btn btn--primary btn--lg', { produit: p.id }), pdf),
-        p.models.length ? h('p', { class: 'tag', text: 'Fiche de gamme : plusieurs modèles ci-dessous' }) : null)),
+        p.models.length ? h('p', { class: 'product__type', text: 'Plusieurs modèles dans cette gamme. Le choix se précise selon votre installation.' }) : null,
+        h('div', { class: 'actions' }, link('/demande', SITE.productCta, 'btn btn--primary btn--lg', { produit: p.id }), pdf),
+        h('p', { class: 'fineprint product__hint', text: SITE.productHint }))),
     h('section', { class: 'section section--tight' }, h('div', { class: 'wrap pdetail' },
       h('div', {}, h('h2', { text: 'À quoi il sert' }), h('p', { text: p.usage }), h('h2', { text: 'Description' }), h('p', { text: p.description }),
         p.applications.length ? [h('h2', { text: 'Applications' }), h('ul', { class: 'plain' }, p.applications.map((a) => h('li', { text: a })))] : null),
@@ -235,7 +236,7 @@ export function produit({ params }) {
       h('p', { class: 'fineprint', text: 'Pour comprendre la gamme. Le choix du modèle se précise avec vous : aucune variante n’est à configurer.' }),
       h('ul', { class: 'models' }, p.models.map(([n, t]) => h('li', {}, h('strong', { text: n }), h('span', { text: t })))))) : null,
     related.length ? h('section', { class: 'section section--tight' }, h('div', { class: 'wrap' }, h('h2', { text: 'Produits proches' }), h('div', { class: 'pgrid' }, related.map(productCard)))) : null,
-    ctaBand('Une question sur cette fiche ?', 'Décrivez votre application : la demande reprend automatiquement cette fiche.', ['/demande', 'Demander ce produit', { produit: p.id }])) };
+    ctaBand('Une question sur cette fiche ?', 'Décrivez votre application : la demande reprend automatiquement cette fiche.', ['/demande', SITE.productCta, { produit: p.id }])) };
 }
 
 /* ---------- Dropout ---------- */

@@ -88,7 +88,7 @@ h1:focus, main:focus { outline: none; }
 
 /* ---------- En-tête, bannière ---------- */
 .banner { background: var(--tint); font-size: 0.82rem; line-height: 1.35; color: var(--muted); }
-.banner p { max-width: var(--wrap); margin-inline: auto; padding: 5px clamp(24px, 3vw, 40px); }
+.banner p { max-width: var(--wrap); margin-inline: auto; padding: 6px clamp(24px, 3vw, 40px); display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 16px; row-gap: 4px; }
 .site-header { position: sticky; top: 0; z-index: 50; background: rgba(243, 247, 250, 0.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
 .bar { max-width: var(--wrap); margin-inline: auto; padding: 8px clamp(24px, 3vw, 40px); display: flex; align-items: center; gap: 24px; }
 .brand img { height: 44px; width: auto; }
@@ -171,7 +171,7 @@ h1:focus, main:focus { outline: none; }
 .stage::after { content: ""; position: absolute; right: 14px; top: 14%; bottom: 14px; width: 9px; background: repeating-linear-gradient(to bottom, rgba(35, 110, 165, 0.5) 0 1px, transparent 1px 14px); }
 .stage .atlas { width: min(100%, 340px); }
 .stage--head { max-width: 380px; margin-left: auto; width: 100%; background-color: var(--white); }
-.stage--product .atlas { width: min(100%, 440px); }
+.stage--product .atlas { width: min(100%, 380px); }
 .stage__tag { position: absolute; left: 14px; bottom: 12px; font-size: 0.78rem; color: var(--muted); }
 .features { display: grid; gap: clamp(40px, 5vw, 72px); }
 .feature { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(28px, 5vw, 80px); align-items: center; }
@@ -292,10 +292,13 @@ h1:focus, main:focus { outline: none; }
 .pager { display: flex; justify-content: space-between; gap: 20px; font-weight: 500; }
 
 /* ---------- Fiche produit ---------- */
-.product { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(28px, 5vw, 80px); align-items: center; padding-block: 28px clamp(32px, 4vw, 56px); }
+.product { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(28px, 5vw, 80px); align-items: start; padding-block: 28px clamp(32px, 4vw, 56px); }
+.product__copy { padding-top: 16px; }
 .product h1 { font-size: clamp(1.9rem, 3vw, 2.7rem); margin: 4px 0 10px; }
 .product .lede { margin-top: 16px; }
-.product .tag { margin-top: 20px; }
+.product .actions { margin-top: 22px; }
+.product__type { margin-top: 14px; padding-left: 12px; border-left: 2px solid var(--line); font-size: 0.94rem; color: var(--muted); }
+.product__hint { margin-top: 14px; }
 .pdetail { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(28px, 5vw, 80px); }
 .pdetail h2 { font-size: 1.35rem; margin: 28px 0 10px; }
 .pdetail > div > h2:first-child { margin-top: 0; }
