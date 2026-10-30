@@ -97,7 +97,7 @@ export function demande({ query }) {
   }
 
   function form3(rerender) {
-    const form = h('form', { novalidate: true, 'aria-labelledby': 'w-title' }, h('h2', { id: 'w-title', text: 'Vos coordonnées' }), h('p', { class: 'fineprint', text: 'Utilisées dans la démonstration uniquement. Utilisez des données fictives.' }));
+    const form = h('form', { novalidate: true, 'aria-labelledby': 'w-title' }, h('h2', { id: 'w-title', text: 'Vos coordonnées' }), h('p', { class: 'fineprint', text: 'Sur le site final, ces coordonnées serviront à vous recontacter pour préciser votre besoin. Dans cette maquette, utilisez uniquement des données fictives : aucun message ne sera envoyé.' }));
     const name = field({ label: 'Nom', name: 'name', value: d.name, required: true, autocomplete: 'name' });
     const email = field({ label: 'Adresse e-mail', name: 'email', type: 'email', value: d.email, required: true, autocomplete: 'email' });
     form.append(name, email,

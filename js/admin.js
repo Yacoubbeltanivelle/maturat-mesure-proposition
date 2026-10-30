@@ -35,7 +35,7 @@ export function shell(path, view, onReset) {
         badge('Démonstration', 'badge--orange'),
         h('nav', { 'aria-label': 'Administration' }, h('ul', {}, nav.map(([r, t]) => h('li', {}, h('a', { href: href(A(r) || '/admin'), 'aria-current': on(r) ? 'page' : null }, t, r === '/demandes' && fresh ? h('span', { class: 'count', text: String(fresh) }) : null))))),
         h('div', { class: 'sidebar__foot' }, link('/', '← Retour au site', 'btn btn--ghost btn--sm'), h('button', { class: 'btn btn--ghost btn--sm', type: 'button', text: 'Réinitialiser', onclick: onReset }))),
-      h('main', { class: 'admin__main', id: 'main' }, msg ? h('p', { class: 'flash', role: 'status', text: msg }) : null, view.node)));
+      h('main', { class: 'admin__main', id: 'main' }, msg ? h('p', { class: 'flash', role: 'status' }, msg) : null, view.node)));
 }
 
 const head = (title, intro, actions) => h('header', { class: 'admin__head' }, h('div', {}, h('h1', { text: title, tabindex: '-1' }), intro ? h('p', { text: intro }) : null), actions ? h('div', { class: 'actions' }, actions) : null);
@@ -149,7 +149,10 @@ export function productForm({ params }) {
   const f = form(spec, vals, { cancel: A('/catalogue'), label: isNew ? 'Créer la fiche (démo)' : 'Enregistrer la démo', onSave: (d) => {
     Object.assign(p, d, { cell: Number(d.cell), applications: lines(d.applications), specs: pairs(d.specs), models: pairs(d.models) });
     if (isNew) { p.id = S.nextProductId(d.title); state.products.unshift(p); }
-    done(A('/catalogue'), `Fiche « ${p.title} » enregistrée dans la démo (${S.isLive(p) ? 'publiée' : 'brouillon'}).`);
+    done(A('/catalogue'), [
+      `Fiche « ${p.title} » enregistrée dans la démo (${S.isLive(p) ? 'publiée' : 'brouillon'}). `,
+      S.isLive(p) ? link(`/produit/${p.id}`, 'Vérifier la fiche sur le site') : null,
+    ]);
   } });
   const fam = $('[name=family]', f); const grp = $('[name=group]', f);
   const fillGroups = (keep) => {
@@ -181,12 +184,12 @@ export function demandeDetail({ params }) {
   if (!r) return wrap('Demande introuvable', 'Cette demande n’existe pas (ou a disparu avec la réinitialisation).', h('p', {}, link(A('/demandes'), '← Retour aux demandes')));
   const rows = [['Date', r.date], ['Nom', r.name || '—'], ['E-mail', r.email || '—'], ['Téléphone', r.phone || '—'], ['Entreprise', r.company || '—'],
     ['Produit', S.product(r.productId)?.title ?? '—'], ['Rubrique', S.family(r.rubrique)?.title ?? '—'], ['Besoin', r.need || (r.unknown ? 'Je ne sais pas encore' : '—')], ['Contexte', r.sector || '—'], ['Fluide', r.fluid || '—'], ['Précision', r.context || '—']];
-  const spec = [{ label: 'Statut', name: 'status', type: 'select', options: options(REQUEST_STATUSES) }, { label: 'Note interne', name: 'note', type: 'textarea', rows: 4, optional: true, hint: 'Visible uniquement dans l’administration.' }];
+  const spec = [{ label: 'Statut de suivi interne', name: 'status', type: 'select', options: options(REQUEST_STATUSES) }, { label: 'Note interne', name: 'note', type: 'textarea', rows: 4, optional: true, hint: 'Visible uniquement dans l’administration.' }];
   const f = form(spec, r, { label: 'Enregistrer la démo', onSave: (d) => { Object.assign(r, d); flash(`Demande ${r.id} mise à jour.`); } });
   return wrap(`Demande ${r.id}`, 'Détail de la demande et suivi interne.', h('div', { class: 'admin__cols' },
     h('section', { class: 'panel' }, h('h2', { text: 'Contenu' }), h('dl', { class: 'facts' }, rows.map(([k, v]) => h('div', {}, h('dt', { text: k }), h('dd', { class: 'pre', text: v })))),
       h('p', { class: 'fineprint', text: 'Le suivi se fait ici ; les réponses aux clients se font depuis votre messagerie habituelle. Aucun e-mail ne peut être envoyé depuis cette maquette.' })),
-    h('section', { class: 'panel' }, h('h2', { text: 'Suivi' }), f)),
+    h('section', { class: 'panel' }, h('h2', { text: 'Suivi interne' }), f)),
     link(A('/demandes'), '← Retour aux demandes', 'btn btn--quiet'));
 }
 

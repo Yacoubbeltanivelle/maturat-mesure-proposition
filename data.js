@@ -30,6 +30,8 @@ export const SITE = {
   name: 'Maturat Mesure',
   banner: 'Maquette · données fictives · aucun envoi ni conservation réelle',
   adminLink: 'Administration de démonstration',
+  productCta: 'Décrire mon besoin pour ce produit',
+  productHint: 'Une question, un choix de modèle ou une demande de devis ? Décrivez votre installation : la demande reprendra cette fiche.',
   nav: [
     { route: '/catalogue', label: 'Catalogue' },
     { route: '/dropout', label: 'Dropout' },
@@ -43,7 +45,7 @@ export const SITE = {
 
 export const HOME = {
   title: 'Mesurer. Contrôler. Maîtriser vos procédés.',
-  intro: 'Instrumentation, signaux et contrôle des fluides : trouvez une référence ou décrivez le besoin de votre installation.',
+  intro: 'Distribution et conseil en instrumentation, signal et fluides. Trouvez une référence ou décrivez le besoin de votre installation.',
   primary: 'Explorer le catalogue',
   secondary: 'Décrire mon besoin',
   measuresLabel: 'Les quatre mesures de l’instrumentation',
@@ -57,7 +59,7 @@ export const HOME = {
   domainsTitle: 'Tous nos domaines',
   domainsIntro: 'L’instrumentation regroupe les quatre mesures ci-dessus. Retrouvez aussi le signal, l’air, les fluides, l’analyse liquide, la smart connexion et les produits associés.',
   featuredTitle: 'Produits à la une',
-  featuredIntro: 'Deux exemples de fiches mises en avant. Dans l’administration de démonstration, ce choix se règle fiche par fiche.',
+  featuredIntro: 'Une sélection de fiches mises en avant. Dans l’administration de démonstration, ce choix se règle fiche par fiche.',
   dropout: {
     kicker: 'Traitement d’air',
     title: 'Dropout : l’eau liquide hors de vos circuits d’air',
